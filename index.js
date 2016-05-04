@@ -1,6 +1,18 @@
 'use strict'
 
 const assert = require('assert')
+const extend = require('xtend')
+const path = require('path')
+const pipe = require('value-pipe')
+const browserify = require('browserify')
+const envify = require('envify/custom')
+const uglifyify = require('uglifyify')
+const collapser = require('bundle-collapser/plugin')
+const exorcist = require('exorcist')
+const fs = require('fs')
+const Stream = require('readable-stream')
+
+const environment = require('./environment')
 
 module.exports = bundleify
 
@@ -26,12 +38,12 @@ function bundleify (options, callback) {
   .add(entry)
   .require(entry, {expose: 'app'})
   .transform(pipe(environment, envify)(options.config))
-  .transform(compressor(uglifyify), {
+  .transform(compress(uglifyify), {
     global: true
   })
   .plugin(options.compress ? collapser : noop)
   .bundle()
-  .pipe(pipe(Exorcise, compressor)(options)())
+  .pipe(pipe(Exorcise, compress)(options)())
   .pipe(WriteStream(options))
   .on('finish', done)
 
@@ -60,3 +72,5 @@ function Exorcise (options) {
 function WriteStream (options) {
   return fs.createWriteStream(path.resolve(options.destination, options.filename))
 }
+
+function noop () {}

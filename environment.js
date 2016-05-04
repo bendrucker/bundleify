@@ -1,5 +1,6 @@
 'use strict'
 
+const pipe = require('value-pipe')
 const partialRight = require('ap').partialRight
 const flatten = require('flat')
 const mapKeys = require('map-keys')
@@ -10,3 +11,7 @@ module.exports = pipe(
   partialRight(mapKeys, uppercase),
   partialRight(extend, {_: 'purge'})
 )
+
+function uppercase (string) {
+  return string.toUpperCase()
+}
