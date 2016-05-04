@@ -31,7 +31,7 @@ test('compressed', function (t) {
     }, 'writes json source map')
 
     const context = {}
-    const result = vm.runInNewContext(code, context)
+    vm.runInNewContext(code, context)
     const bundleRequire = context.require
 
     const app = bundleRequire('app')
@@ -68,7 +68,7 @@ test('uncompressed', function (t) {
     const code = fs.readFileSync(path.resolve(__dirname, 'uncompressed/bundle.js'))
 
     const context = {}
-    const result = vm.runInNewContext(code, context)
+    vm.runInNewContext(code, context)
     const bundleRequire = context.require
 
     const app = bundleRequire('app')
