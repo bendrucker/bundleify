@@ -1,0 +1,42 @@
+{
+  "name": "bundleify",
+  "main": "index.js",
+  "version": "0.0.0",
+  "description": "Bundle your JS with browserify with preconfigured transforms",
+  "license": "MIT",
+  "repository": "bendrucker/bundleify",
+  "author": {
+    "name": "Ben Drucker",
+    "email": "bvdrucker@gmail.com",
+    "url": "bendrucker.me"
+  },
+  "scripts": {
+    "test": "standard && tape test.js"
+  },
+  "keywords": [
+    "browserify",
+    "bundle",
+    "eaze",
+    "transform",
+    "uglify",
+    "source",
+    "maps",
+    "defaults",
+    "stream"
+  ],
+  "devDependencies": {
+    "tape": "^4.0.0",
+    "standard": "^7.0.0"
+  },
+  "files": [
+    "index.js",
+    "test.js"
+  ],
+  "dependencies": {
+    "ap": "~0.2.0",
+    "bundle-collapser": "~1.2.1",
+    "flat": "~2.0.0",
+    "map-keys": "~1.0.0",
+    "xtend": "~4.0.1"
+  }
+}
