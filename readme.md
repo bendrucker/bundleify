@@ -55,9 +55,9 @@ The relative path to the entry file.
 *Required*  
 Type: `string`
 
-The relative path to the destionation folder.
+The relative path to the destination folder.
 
-###### destination
+###### basedir
 
 Type: `string`  
 Default: `process.cwd()`
