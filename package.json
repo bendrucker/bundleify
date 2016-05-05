@@ -30,10 +30,7 @@
     "tape": "^4.0.0"
   },
   "files": [
-    "index.js",
-    "test.js",
-    "environment.js",
-    "uglify.js"
+    "*.js"
   ],
   "dependencies": {
     "ap": "~0.2.0",
