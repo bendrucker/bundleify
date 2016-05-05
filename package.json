@@ -32,7 +32,8 @@
   "files": [
     "index.js",
     "test.js",
-    "environment.js"
+    "environment.js",
+    "uglify.js"
   ],
   "dependencies": {
     "ap": "~0.2.0",
