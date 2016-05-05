@@ -31,7 +31,8 @@ bundleify applies the following settings and transforms:
 * applies minification transforms when in compression mode:
   * [uglifyify](https://github.com/hughsk/uglifyify)
   * [bundle-collapser](https://www.npmjs.com/package/bundle-collapser)
-  * [exorcist](https://www.npmjs.com/package/exorcist)
+  * extracts source map to an external file
+  * re-compresses with [uglify](https://github.com/mishoo/UglifyJS2) for more byte savings
 * applies 
 
 ## API

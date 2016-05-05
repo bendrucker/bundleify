@@ -8,7 +8,7 @@ const vm = require('vm')
 const bundleify = require('./')
 
 test('compressed', function (t) {
-  t.plan(4)
+  t.plan(5)
 
   rimraf.sync('compressed')
   fs.mkdirSync('compressed')
@@ -44,6 +44,7 @@ test('compressed', function (t) {
 
     t.ok(String(code).includes('env:"env-value"'), 'compresses module code')
     t.ok(String(code).includes('undefinedEnv:void 0'), 'strips undefined env vars')
+    t.ok(String(code).includes('//# sourceMappingURL=bundle.js.map'), 'includes source map url in comment')
 
     rimraf.sync('compressed')
   })

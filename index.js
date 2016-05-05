@@ -8,11 +8,11 @@ const browserify = require('browserify')
 const envify = require('envify/custom')
 const uglifyify = require('uglifyify')
 const collapser = require('bundle-collapser/plugin')
-const exorcist = require('exorcist')
 const fs = require('fs')
 const Stream = require('readable-stream')
 
 const environment = require('./environment')
+const uglify = require('./uglify')
 
 module.exports = bundleify
 
@@ -43,7 +43,8 @@ function bundleify (options, callback) {
   })
   .plugin(options.compress ? collapser : noop)
   .bundle()
-  .pipe(pipe(Exorcise, compress)(options)())
+  .pipe(compress(uglify)(options))
+  // .pipe(pipe(Exorcise, compress)(options)())
   .pipe(WriteStream(options))
   .on('finish', done)
 
@@ -55,17 +56,6 @@ function bundleify (options, callback) {
 function Compressor (options) {
   return function compress (fn) {
     return options.compress ? fn : Stream.PassThrough
-  }
-}
-
-function Exorcise (options) {
-  return function exorcise () {
-    return exorcist(
-      path.resolve(options.destination, options.filename + '.map'), // destination
-      null, // uri
-      null, // root
-      options.basedir // base
-    )
   }
 }
 
