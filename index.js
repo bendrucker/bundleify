@@ -19,7 +19,8 @@ module.exports = bundleify
 const defaults = {
   basedir: process.cwd(),
   filename: 'bundle.js',
-  config: {}
+  config: {},
+  plugins: []
 }
 
 function bundleify (options, callback) {
@@ -37,6 +38,7 @@ function bundleify (options, callback) {
   })
   .add(entry)
   .require(entry, {expose: 'app'})
+  .plugin(customize, options)
   .transform(pipe(environment, envify)(options.config))
   .transform(compress(uglifyify), {
     global: true
@@ -51,6 +53,10 @@ function bundleify (options, callback) {
   function done () {
     callback(null)
   }
+}
+
+function customize (browserify, options) {
+  options.plugins.forEach(plugin => browserify.plugin(plugin))
 }
 
 function Compressor (options) {

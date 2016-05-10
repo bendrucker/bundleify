@@ -87,3 +87,34 @@ test('uncompressed', function (t) {
     rimraf.sync('uncompressed')
   })
 })
+
+test('plugins', function (t) {
+  t.plan(4)
+
+  rimraf.sync('plugins')
+  fs.mkdirSync('plugins')
+
+  bundleify({
+    entry: 'fixture.js',
+    compress: false,
+    destination: 'plugins',
+    plugins: [
+      function pluginA (browserify, options) {
+        t.equal(typeof browserify.bundle, 'function', 'receives browserify instance')
+        t.equal(typeof options, 'object', 'receives default options')
+      },
+      [
+        function pluginB (browserify, options) {
+          t.equal(typeof browserify.bundle, 'function', 'receives browserify instance')
+          t.equal(options.foo, 'bar', 'receives custom options')
+        },
+        {
+          foo: 'bar'
+        }
+      ]
+    ]
+  }, function (err) {
+    if (err) t.end(err)
+    rimraf.sync('plugins')
+  })
+})
