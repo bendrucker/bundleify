@@ -8,7 +8,7 @@ const vm = require('vm')
 const bundleify = require('./')
 
 test('compressed', function (t) {
-  t.plan(5)
+  t.plan(6)
 
   rimraf.sync('compressed')
   fs.mkdirSync('compressed')
@@ -26,9 +26,9 @@ test('compressed', function (t) {
     const code = fs.readFileSync(path.resolve(__dirname, 'compressed/bundle.js'))
     const map = fs.readFileSync(path.resolve(__dirname, 'compressed/bundle.js.map'))
 
-    t.doesNotThrow(function () {
-      JSON.parse(map)
-    }, 'writes json source map')
+    const sourceMap = JSON.parse(map)
+    t.ok(sourceMap.sourcesContent, 'includes sourcesContent (code) in source map')
+    t.ok(sourceMap.sourcesContent.every(content => typeof content === 'string'), 'has defined sourcesContent')
 
     const context = {}
     vm.runInNewContext(code, context)
