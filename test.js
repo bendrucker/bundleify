@@ -6,6 +6,7 @@ const path = require('path')
 const rimraf = require('rimraf')
 const vm = require('vm')
 const bundleify = require('./')
+const environment = require('./environment')
 
 test('compressed', function (t) {
   t.plan(6)
@@ -117,4 +118,9 @@ test('plugins', function (t) {
     if (err) t.end(err)
     rimraf.sync('plugins')
   })
+})
+
+test('environment', function (t) {
+  t.deepEqual(environment({foo: {bar: 'baz'}}), {FOO_BAR: 'baz', _: 'purge'}, 'transforms nested data into ENV_STYLE')
+  t.end()
 })
