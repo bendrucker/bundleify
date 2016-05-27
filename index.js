@@ -5,6 +5,7 @@ const extend = require('xtend')
 const path = require('path')
 const pipe = require('value-pipe')
 const browserify = require('browserify')
+const es2020 = require('es2020')
 const envify = require('envify/custom')
 const uglifyify = require('uglifyify')
 const collapser = require('bundle-collapser/plugin')
@@ -39,6 +40,7 @@ function bundleify (options, callback) {
   .add(entry)
   .require(entry, {expose: 'app'})
   .plugin(customize, options)
+  .transform(es2020)
   .transform(pipe(environment, envify)(options.config))
   .transform(compress(uglifyify), {
     global: true

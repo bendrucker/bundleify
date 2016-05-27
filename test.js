@@ -52,7 +52,7 @@ test('compressed', function (t) {
 })
 
 test('uncompressed', function (t) {
-  t.plan(4)
+  t.plan(7)
 
   rimraf.sync('uncompressed')
   fs.mkdirSync('uncompressed')
@@ -81,6 +81,9 @@ test('uncompressed', function (t) {
       value: 123
     }, 'exports entry as "app"')
 
+    t.notOk(String(code).includes('=>'), 'compiles arrow functions')
+    t.notOk(String(code).includes('`', 'compiles template strings'))
+    t.notOk(String(code).includes('const', 'compiles const'))
     t.ok(String(code).includes('sourceMappingURL=data:application/json'), 'preserves inline source map')
     t.ok(String(code).includes('env: "env-value"'), 'does not compress module code')
     t.ok(String(code).includes('undefinedEnv: undefined'), 'strips undefined env vars')

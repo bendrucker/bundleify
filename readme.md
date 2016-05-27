@@ -25,6 +25,7 @@ bundleify({
 
 bundleify applies the following settings and transforms:
 
+* [es2020](https://github.com/yoshuawuyts/es2020), a transpiler for a tiny subset of ES6
 * source maps
 * exposes your entry as `require('app')`
 * flattens configuration and uses it to replace environment variables

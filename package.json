@@ -37,6 +37,7 @@
     "browserify": "~13.0.0",
     "bundle-collapser": "~1.2.1",
     "envify": "~3.4.0",
+    "es2020": "~1.1.2",
     "exorcist": "~0.4.0",
     "flat": "~2.0.0",
     "map-keys": "~1.0.0",
