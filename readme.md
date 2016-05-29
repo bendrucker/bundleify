@@ -34,7 +34,6 @@ bundleify applies the following settings and transforms:
   * [bundle-collapser](https://www.npmjs.com/package/bundle-collapser)
   * extracts source map to an external file
   * re-compresses with [uglify](https://github.com/mishoo/UglifyJS2) for more byte savings
-* applies 
 
 ## API
 
