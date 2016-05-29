@@ -35,6 +35,13 @@ bundleify applies the following settings and transforms:
   * extracts source map to an external file
   * re-compresses with [uglify](https://github.com/mishoo/UglifyJS2) for more byte savings
 
+### Transforms
+
+Browserify transforms applied to the bundle are not [global](https://github.com/substack/node-browserify#btransformtr-opts), except uglifyify. That means the following features are limited to your code and do not run on your dependencies:
+
+* ES2020
+* Environment variable replacement
+
 ## API
 
 #### `bundleify(options, callback)` -> `undefined`
