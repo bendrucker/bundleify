@@ -40,7 +40,9 @@ function bundleify (options, callback) {
   .add(entry)
   .require(entry, {expose: 'app'})
   .plugin(customize, options)
-  .transform(es2020)
+  .transform(es2020, {
+    global: true
+  })
   .transform(pipe(environment, envify)(options.config))
   .transform(compress(uglifyify), {
     global: true

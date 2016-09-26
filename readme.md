@@ -37,9 +37,8 @@ bundleify applies the following settings and transforms:
 
 ### Transforms
 
-Browserify transforms applied to the bundle are not [global](https://github.com/substack/node-browserify#btransformtr-opts), except uglifyify. That means the following features are limited to your code and do not run on your dependencies:
+Browserify transforms applied to the bundle are not [global](https://github.com/substack/node-browserify#btransformtr-opts) by default, but *uglifyify* and *es2020* are explicitly run globally. That means the following features are limited to your code and do not run on your dependencies:
 
-* ES2020
 * Environment variable replacement
 
 ## API
