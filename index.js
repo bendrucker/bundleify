@@ -34,9 +34,10 @@ function bundleify (options, callback) {
   const entry = path.resolve(options.basedir, options.entry)
   const compress = Compressor(options)
 
-  browserify({
-    debug: true
-  })
+  browserify(extend(
+    {debug: true},
+    options.browserify
+  ))
   .add(entry)
   .require(entry, {expose: 'app'})
   .plugin(customize, options)
