@@ -124,6 +124,6 @@ test('plugins', function (t) {
 })
 
 test('environment', function (t) {
-  t.deepEqual(environment({foo: {bar: 'baz'}}), {FOO_BAR: 'baz', _: 'purge'}, 'transforms nested data into ENV_STYLE')
+  t.deepEqual(environment({ foo: { bar: 'baz' } }), { FOO_BAR: 'baz', _: 'purge' }, 'transforms nested data into ENV_STYLE')
   t.end()
 })
