@@ -1,4 +1,4 @@
-# bundleify [![Build Status](https://travis-ci.org/bendrucker/bundleify.svg?branch=master)](https://travis-ci.org/bendrucker/bundleify)
+# bundleify [![Build Status](https://travis-ci.org/bendrucker/bundleify.svg?branch=master)](https://travis-ci.org/bendrucker/bundleify) [![Greenkeeper badge](https://badges.greenkeeper.io/bendrucker/bundleify.svg)](https://greenkeeper.io/)
 
 > Bundle your JS with browserify with preconfigured transforms
 
