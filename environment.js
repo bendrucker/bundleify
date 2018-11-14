@@ -12,6 +12,6 @@ module.exports = pipe(
   partialRight(extend, { _: 'purge' })
 )
 
-function uppercase (string) {
+function uppercase (_, string) {
   return string.toUpperCase()
 }
